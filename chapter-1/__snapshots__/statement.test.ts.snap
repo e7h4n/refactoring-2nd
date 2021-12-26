@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`statement should throw exception if type is unexpected 1`] = `"unknown type: foo"`;
+
+exports[`statement statement safety net: [{"performances":[]},{"foo":{"name":"Foo","type":"comedy"}}] 1`] = `
+"Statement for undefined
+Amount owed is $0.00
+You earned 0 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[]},{"foo":{"name":"Foo","type":"tragedy"}}] 1`] = `
+"Statement for undefined
+Amount owed is $0.00
+You earned 0 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":10}]},{"foo":{"name":"Foo","type":"comedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $330.00 (10 seats)
+Amount owed is $330.00
+You earned 2 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":10}]},{"foo":{"name":"Foo","type":"comedy"}}] 2`] = `
+"Statement for undefined
+ Foo: $330.00 (10 seats)
+Amount owed is $330.00
+You earned 2 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":10}]},{"foo":{"name":"Foo","type":"tragedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $400.00 (10 seats)
+Amount owed is $400.00
+You earned 0 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":10}]},{"foo":{"name":"Foo","type":"tragedy"}}] 2`] = `
+"Statement for undefined
+ Foo: $400.00 (10 seats)
+Amount owed is $400.00
+You earned 0 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":20}]},{"foo":{"name":"Foo","type":"comedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $360.00 (20 seats)
+Amount owed is $360.00
+You earned 4 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":20}]},{"foo":{"name":"Foo","type":"tragedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $400.00 (20 seats)
+Amount owed is $400.00
+You earned 0 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":21}]},{"foo":{"name":"Foo","type":"comedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $468.00 (21 seats)
+Amount owed is $468.00
+You earned 4 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":21}]},{"foo":{"name":"Foo","type":"tragedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $400.00 (21 seats)
+Amount owed is $400.00
+You earned 0 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":29}]},{"foo":{"name":"Foo","type":"comedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $532.00 (29 seats)
+Amount owed is $532.00
+You earned 5 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":29}]},{"foo":{"name":"Foo","type":"tragedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $400.00 (29 seats)
+Amount owed is $400.00
+You earned 0 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":30}]},{"foo":{"name":"Foo","type":"comedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $540.00 (30 seats)
+Amount owed is $540.00
+You earned 6 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":30}]},{"foo":{"name":"Foo","type":"tragedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $400.00 (30 seats)
+Amount owed is $400.00
+You earned 0 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":31}]},{"foo":{"name":"Foo","type":"comedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $548.00 (31 seats)
+Amount owed is $548.00
+You earned 7 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":31}]},{"foo":{"name":"Foo","type":"tragedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $410.00 (31 seats)
+Amount owed is $410.00
+You earned 1 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":100}]},{"foo":{"name":"Foo","type":"comedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $1,100.00 (100 seats)
+Amount owed is $1,100.00
+You earned 90 credits
+"
+`;
+
+exports[`statement statement safety net: [{"performances":[{"playID":"foo","audience":100}]},{"foo":{"name":"Foo","type":"tragedy"}}] 1`] = `
+"Statement for undefined
+ Foo: $1,100.00 (100 seats)
+Amount owed is $1,100.00
+You earned 70 credits
+"
+`;
