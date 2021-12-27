@@ -19,83 +19,60 @@ function verifyAllCombinationsSnapshot(testName: string, targetFunc, ...argsList
 
     for(let i = 0; i < result.length; i++) {
         test(testName + ': ' + JSON.stringify(result[i]), async () => {
-            const ret = await targetFunc(...result[i]);
-            expect(ret).toMatchSnapshot();
+            let ret = null;
+            try {
+                ret = await targetFunc(...result[i]);
+                expect(ret).toMatchSnapshot();
+            } catch (e) {
+                expect(e).toMatchSnapshot();
+            }
         });
     }
 }
 
 
 describe('statement', () => {
-    verifyAllCombinationsSnapshot('statement safety net', statement, [{
-        performances: [],
-    }, {
-        performances: [{
-            playID: 'foo',
-            audience: 10,
-        }],
-    }, {
-        performances: [{
-            playID: 'foo',
-            audience: 10,
-        }],
-    }, {
-        performances: [{
-            playID: 'foo',
-            audience: 100,
-        }],
-    }, {
-        performances: [{
-            playID: 'foo',
-            audience: 20,
-        }],
-    }, {
-        performances: [{
-            playID: 'foo',
-            audience: 21,
-        }],
-    }, {
-        performances: [{
-            playID: 'foo',
-            audience: 29,
-        }],
-    }, {
-        performances: [{
-            playID: 'foo',
-            audience: 31,
-        }],
-    }, {
-        performances: [{
-            playID: 'foo',
-            audience: 30,
-        }],
-    }], [
-        {
+    function performanceFooWithAudience(audience: number | null) {
+        if (audience === null) {
+            return {
+                performances: [],
+            };
+        }
+
+        return {
+            performances: [{
+                playID: 'foo',
+                audience,
+            }],
+        }
+    }
+
+    function playFooWithType(playType: 'comedy' | 'tragedy') {
+        return {
             foo: {
                 name: 'Foo',
-                type: 'comedy',
-            }
-        }, {
-            foo: {
-                name: 'Foo',
-                type: 'tragedy',
+                type: playType,
             }
         }
-    ]);
+    }
 
-    test('should throw exception if type is unexpected', () => {
-        expect(() => {
-            statement({
-                performances: [{
-                    playID: 'foo',
-                    audience: 30,
-                }],
-            }, {
-                foo: {
-                    name: 'Foo',
-                    type: 'foo',
-                }
-            });
-        }).toThrowErrorMatchingSnapshot();
-    });
+    verifyAllCombinationsSnapshot('statement safety net', (audience: number | null, type: string | null) => {
+        const perfs = performanceFooWithAudience(audience)
+        const plays = playFooWithType(type);
+        return statement(perfs, plays);
+    }, [
+        null,
+        10,
+        100,
+        20,
+        21,
+        29,
+        31,
+        30,
+    ], [
+        null,
+        'comedy',
+        'tragedy',
+        'foo',
+    ]);
 });
